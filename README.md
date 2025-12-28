@@ -1,4 +1,4 @@
-# ber-tlv
+# @tomkp/ber-tlv
 
 A modern TypeScript library for ASN.1 BER-TLV encoding and decoding.
 
@@ -15,7 +15,7 @@ A modern TypeScript library for ASN.1 BER-TLV encoding and decoding.
 ## Installation
 
 ```bash
-npm install ber-tlv
+npm install @tomkp/ber-tlv
 ```
 
 ## Usage
@@ -23,7 +23,7 @@ npm install ber-tlv
 ### Parsing TLV Data
 
 ```typescript
-import { parse } from "ber-tlv";
+import { parse } from "@tomkp/ber-tlv";
 
 // Parse a simple TLV: tag 0x01, length 0x02, value 0xABCD
 const data = new Uint8Array([0x01, 0x02, 0xab, 0xcd]);
@@ -36,7 +36,7 @@ console.log(tlvs[0].value);       // Uint8Array [0xab, 0xcd]
 ### Parsing Nested Structures
 
 ```typescript
-import { parse } from "ber-tlv";
+import { parse } from "@tomkp/ber-tlv";
 
 // SEQUENCE containing two primitives
 const data = new Uint8Array([0x30, 0x06, 0x01, 0x01, 0xaa, 0x02, 0x01, 0xbb]);
@@ -50,7 +50,7 @@ console.log(tlvs[0].children?.[0].value); // Uint8Array [0xaa]
 ### Parsing EMV-Style Multi-Byte Tags
 
 ```typescript
-import { parse } from "ber-tlv";
+import { parse } from "@tomkp/ber-tlv";
 
 // EMV tag 9F27 (Cryptogram Information Data)
 const data = new Uint8Array([0x9f, 0x27, 0x01, 0x80]);
@@ -63,7 +63,7 @@ console.log(tlvs[0].tag.number); // 39 (0x27)
 ### Encoding TLV Data
 
 ```typescript
-import { encode, TagClass, type Tlv } from "ber-tlv";
+import { encode, TagClass, type Tlv } from "@tomkp/ber-tlv";
 
 const tlv: Tlv = {
   tag: { number: 0x01, constructed: false, class: TagClass.Universal },
@@ -77,7 +77,7 @@ console.log(encoded); // Uint8Array [0x01, 0x02, 0xab, 0xcd]
 ### Encoding Nested Structures
 
 ```typescript
-import { encode, TagClass, type Tlv } from "ber-tlv";
+import { encode, TagClass, type Tlv } from "@tomkp/ber-tlv";
 
 const tlv: Tlv = {
   tag: { number: 0x10, constructed: true, class: TagClass.Universal },
@@ -95,7 +95,7 @@ const encoded = encode([tlv]);
 ### Low-Level Tag/Length Functions
 
 ```typescript
-import { parseTag, encodeTag, parseLength, encodeLength, TagClass } from "ber-tlv";
+import { parseTag, encodeTag, parseLength, encodeLength, TagClass } from "@tomkp/ber-tlv";
 
 // Parse a tag
 const tagResult = parseTag(new Uint8Array([0x9f, 0x27]), 0);
