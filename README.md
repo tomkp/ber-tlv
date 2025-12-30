@@ -172,6 +172,10 @@ This library implements BER-TLV encoding as defined in ISO/IEC 8825-1 / X.690.
 - **Short form** (0-127): Single byte, bit 7 = 0
 - **Long form** (128+): First byte = 0x80 | number of length bytes, followed by length bytes
 
+## Related Projects
+
+- [tomkp/emv](https://github.com/tomkp/emv) - Interactive EMV chip card explorer. EMV payment cards (Europay, MasterCard, Visa) use BER-TLV encoding extensively for application data, card responses, and cardholder verification. This project demonstrates real-world BER-TLV usage in the payment card industry.
+
 ## Requirements
 
 - Node.js 22+
